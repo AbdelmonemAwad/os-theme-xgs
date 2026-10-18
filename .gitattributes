@@ -1,0 +1,8 @@
+# Everything here is read by FreeBSD, and the compiled stylesheets are compared byte for byte with
+# what the sources compile to: a CRLF checkout must not reach either.
+* text=auto eol=lf
+*.png binary
+*.woff2 binary
+*.woff binary
+*.ttf binary
+*.eot binary
