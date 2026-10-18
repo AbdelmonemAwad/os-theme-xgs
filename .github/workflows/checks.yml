@@ -1,0 +1,67 @@
+#-
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+#
+name: checks
+
+# What a change to the theme has to survive before it can be merged. There is no OPNsense on a
+# GitHub runner, so this does not judge how the theme looks - that is done on a page of the GUI
+# (tools/serve.py) and on an appliance - but it catches what would reach an appliance broken:
+#
+#   * a stylesheet in build/css that is not what its sources compile to: the appliance gets
+#     build/css, and a source changed without a rebuild would be a change nobody sees;
+#   * a script that does not parse;
+#   * a palette in the README that is not the colours the tokens hold;
+#   * an address or a name from the machine this was written on.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: stylesheets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: The compiler, as package-lock.json pins it
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: build/css is what the sources compile to
+        run: |
+          sh tools/build-css.sh
+          git diff --exit-code --stat -- src/opnsense/www/themes || {
+            echo "::error::build/css differs from what the sources compile to - run sh tools/build-css.sh and commit"
+            exit 1
+          }
+      - name: The palettes are the tokens' colours
+        run: python3 tools/readme-art.py --check
+
+  syntax:
+    name: syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python
+        run: python3 -m compileall -q tools
+      - name: Shell
+        run: for f in install/*.sh tools/*.sh; do sh -n "$f" && echo "ok $f"; done
+      - name: The switcher
+        run: node --check src/opnsense/www/themes/xgs-auto/build/js/theme.js
+
+  private:
+    name: nothing private
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No real addresses, hardware identifiers or credentials
+        run: python3 tools/check-private-data.py .
+      - name: No Arabic outside the translation files
+        run: python3 tools/check-code-language.py .

@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+//
+// IBM Plex, in the theme itself: an appliance's GUI is often opened where there is no internet, so
+// no font comes from a font service. Sans for Latin, Sans Arabic for Arabic - the browser takes each
+// glyph from the first family that has it, so one stack serves both - and Mono for machine text.
+// SIL Open Font License 1.1: build/fonts/LICENSE.IBMPlex.txt.
+
+$xgs-font-root: "/ui/themes/xgs/build/fonts/";
+
+@mixin xgs-face($family, $file, $weight) {
+  @font-face {
+    font-family: $family;
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url($xgs-font-root + $file + ".woff2") format("woff2");
+  }
+}
+
+@include xgs-face("IBM Plex Sans", "IBMPlexSans-Regular", 400);
+@include xgs-face("IBM Plex Sans", "IBMPlexSans-Medium", 500);
+@include xgs-face("IBM Plex Sans", "IBMPlexSans-SemiBold", 600);
+@include xgs-face("IBM Plex Sans", "IBMPlexSans-Bold", 700);
+@include xgs-face("IBM Plex Sans Arabic", "IBMPlexSansArabic-Regular", 400);
+@include xgs-face("IBM Plex Sans Arabic", "IBMPlexSansArabic-Medium", 500);
+@include xgs-face("IBM Plex Sans Arabic", "IBMPlexSansArabic-SemiBold", 600);
+@include xgs-face("IBM Plex Sans Arabic", "IBMPlexSansArabic-Bold", 700);
+@include xgs-face("IBM Plex Mono", "IBMPlexMono-Regular", 400);
+@include xgs-face("IBM Plex Mono", "IBMPlexMono-Medium", 500);

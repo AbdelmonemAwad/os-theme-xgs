@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="392" viewBox="0 0 1200 392" role="img" aria-label="Light - xgs">
+<rect width="1200" height="392" rx="14" fill="#F3F4F1"/>
+<text x="32" y="42" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" fill="#14171B">Light - xgs</text>
+<rect x="32.0" y="64" width="179.3" height="66" rx="10" fill="#F3F4F1" stroke="#DCDFE3"/>
+<text x="32.0" y="152" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">ground</text>
+<text x="32.0" y="172" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#F3F4F1</text>
+<rect x="223.3" y="64" width="179.3" height="66" rx="10" fill="#FFFFFF" stroke="#DCDFE3"/>
+<text x="223.3" y="152" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">surface</text>
+<text x="223.3" y="172" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#FFFFFF</text>
+<rect x="414.7" y="64" width="179.3" height="66" rx="10" fill="#DCDFE3" stroke="#DCDFE3"/>
+<text x="414.7" y="152" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">line</text>
+<text x="414.7" y="172" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#DCDFE3</text>
+<rect x="606.0" y="64" width="179.3" height="66" rx="10" fill="#14171B" stroke="#DCDFE3"/>
+<text x="606.0" y="152" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">text</text>
+<text x="606.0" y="172" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#14171B</text>
+<rect x="797.3" y="64" width="179.3" height="66" rx="10" fill="#59626E" stroke="#DCDFE3"/>
+<text x="797.3" y="152" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">muted</text>
+<text x="797.3" y="172" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#59626E</text>
+<rect x="988.7" y="64" width="179.3" height="66" rx="10" fill="#16191D" stroke="#DCDFE3"/>
+<text x="988.7" y="152" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">carbon</text>
+<text x="988.7" y="172" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#16191D</text>
+<rect x="32.0" y="216" width="179.3" height="66" rx="10" fill="#B04E14" stroke="#DCDFE3"/>
+<text x="32.0" y="304" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">copper</text>
+<text x="32.0" y="324" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#B04E14</text>
+<rect x="223.3" y="216" width="179.3" height="66" rx="10" fill="#0B7480" stroke="#DCDFE3"/>
+<text x="223.3" y="304" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">signal</text>
+<text x="223.3" y="324" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#0B7480</text>
+<rect x="414.7" y="216" width="179.3" height="66" rx="10" fill="#1B7A4B" stroke="#DCDFE3"/>
+<text x="414.7" y="304" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">up</text>
+<text x="414.7" y="324" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#1B7A4B</text>
+<rect x="606.0" y="216" width="179.3" height="66" rx="10" fill="#9A6510" stroke="#DCDFE3"/>
+<text x="606.0" y="304" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">caution</text>
+<text x="606.0" y="324" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#9A6510</text>
+<rect x="797.3" y="216" width="179.3" height="66" rx="10" fill="#B42318" stroke="#DCDFE3"/>
+<text x="797.3" y="304" font-family="IBM Plex Sans, Segoe UI, Arial, sans-serif" font-size="15" font-weight="600" fill="#14171B">down</text>
+<text x="797.3" y="324" font-family="IBM Plex Mono, Consolas, monospace" font-size="13" fill="#59626E">#B42318</text>
+</svg>

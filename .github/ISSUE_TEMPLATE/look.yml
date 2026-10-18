@@ -1,0 +1,38 @@
+#-
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+#
+name: A page that looks wrong with the theme
+description: Something unreadable, the wrong colour, overlapping or cut off.
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options:
+        - xgs (light)
+        - xgs-dark
+        - xgs-auto, in light
+        - xgs-auto, in dark
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The menu path or the address after the host, and the GUI language.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The theme version installed, the OPNsense version and the browser.
+  - type: textarea
+    id: what
+    attributes:
+      label: What looks wrong
+      description: A screenshot helps most. Take out addresses and host names first.
+    validations:
+      required: true

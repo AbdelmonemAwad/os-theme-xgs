@@ -1,0 +1,496 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+//
+// XGS Silicon: everything this theme changes on top of OPNsense's own theme, in both modes. Loaded
+// last by main.scss, after OPNsense's rules, and written only in tokens ($xgs-*), so that xgs and
+// xgs-dark compile this one file with their own values.
+//
+// What it is: a carbon bar and menu in both modes, as the chassis is; copper for what the owner acts
+// on; teal for the data path; IBM Plex, which has an Arabic of its own. What it is not: a change of
+// layout. Every height OPNsense sets stays, so no page moves; only colour, type and corners change.
+
+// ------------------------------------------------------------------------------------- the page
+
+html, body {
+  background-color: $xgs-ground;
+}
+
+body {
+  color: $xgs-text;
+}
+
+// Arabic needs a taller line than Latin, and no letter spacing at all: spacing breaks the joins.
+html[dir="rtl"] body, html[lang^="ar"] body {
+  line-height: 1.5;
+}
+
+html[dir="rtl"] *, html[lang^="ar"] * {
+  letter-spacing: 0 !important;
+}
+
+::selection {
+  background: rgba($xgs-copper, .22);
+}
+
+.page-content,
+.page-content-main,
+.page-login {
+  background: $xgs-ground;
+}
+
+.page-content-head {
+  background: $xgs-surface;
+  border-bottom: 1px solid $xgs-line;
+
+  h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -.2px;
+  }
+}
+
+.content-box,
+div.tab-content.content-box {
+  background: $xgs-surface;
+  border: 1px solid $xgs-line;
+  border-radius: 10px;
+  box-shadow: $xgs-shadow;
+}
+
+// A tab's content box joins the tabs above it: square at the top.
+.nav-tabs + .tab-content.content-box,
+.nav-tabs + div.tab-content.content-box {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.page-foot {
+  background: $xgs-surface;
+  border-top: 1px solid $xgs-line;
+  color: $xgs-muted;
+}
+
+hr {
+  border-top-color: $xgs-line;
+}
+
+// -------------------------------------------------------------------------- the bar along the top
+
+.page-head .navbar,
+.page-head .navbar-default {
+  background: $xgs-carbon;
+  border: 0;
+  border-bottom: 1px solid $xgs-carbon-line;
+}
+
+.page-head .navbar-text,
+.page-head .navbar-nav > li > a,
+.page-head .navbar-nav > li > span {
+  color: $xgs-carbon-text;
+}
+
+.page-head .navbar-nav > li > a:hover,
+.page-head .navbar-nav > li > a:focus,
+.page-head .navbar-nav > .open > a,
+.page-head .navbar-nav > .open > a:hover,
+.page-head .navbar-nav > .open > a:focus {
+  color: #FFFFFF;
+  background: $xgs-carbon-raised;
+}
+
+.page-head .navbar-form .form-control,
+.page-head input[type="text"],
+.page-head input[type="search"] {
+  background: $xgs-carbon-raised;
+  border-color: $xgs-carbon-line;
+  color: #E6E9ED;
+
+  &::placeholder {
+    color: $xgs-carbon-muted;
+  }
+}
+
+.page-head .navbar-toggle {
+  border-color: $xgs-carbon-line;
+
+  .icon-bar {
+    background-color: $xgs-carbon-text;
+  }
+}
+
+button.toggle-sidebar {
+  color: $xgs-carbon-text;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+}
+
+// ------------------------------------------------------------------------------------- the menu
+
+.page-side,
+#navigation {
+  background: $xgs-carbon;
+  border-right: 0;
+}
+
+#navigation .page-side-nav,
+#mainmenu,
+#mainmenu .panel,
+#mainmenu .list-group {
+  background: transparent;
+  border-color: $xgs-carbon-line;
+}
+
+#mainmenu .list-group-item {
+  background: transparent;
+  color: $xgs-carbon-text;
+  border-color: $xgs-carbon-line;
+
+  .fa, .fa-solid, .glyphicon {
+    color: $xgs-carbon-muted;
+  }
+
+  &:hover,
+  &:focus {
+    background: $xgs-carbon-raised;
+    color: #FFFFFF;
+
+    .fa, .fa-solid, .glyphicon {
+      color: #FFFFFF;
+    }
+  }
+
+  &:before {
+    background: $xgs-copper;
+  }
+}
+
+// What is open below a heading sits a shade deeper than the headings.
+#mainmenu .collapse > .list-group-item,
+#mainmenu .collapsing > .list-group-item {
+  background: $xgs-carbon-deep;
+}
+
+#mainmenu .active-menu-title,
+#mainmenu .active-menu a {
+  background: $xgs-carbon-raised;
+  color: #FFFFFF;
+
+  > span.fa, .fa {
+    color: $xgs-copper-text;
+  }
+
+  &.active {
+    background: lighten($xgs-carbon-raised, 5%);
+    color: #FFFFFF;
+  }
+}
+
+#mainmenu .active-menu-title:before,
+#mainmenu .active-menu a:before {
+  background: $xgs-copper;
+}
+
+// The collapsed menu: OPNsense paints its flyouts white (black in the dark theme) with !important.
+#navigation.col-sidebar-left > div.row > nav.page-side-nav {
+  background: $xgs-carbon;
+  border-right-color: $xgs-carbon-line;
+}
+
+#navigation.col-sidebar-left > div > nav > #mainmenu > div > a.list-group-item {
+  border-right-color: $xgs-carbon-line;
+}
+
+#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in,
+#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in {
+  border-color: $xgs-carbon-line;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, .25);
+}
+
+#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > a.list-group-item,
+#navigation.col-sidebar-left > div > nav > #mainmenu > div > div.collapse.in > div.collapse.in > a.list-group-item {
+  background-color: $xgs-carbon !important;
+  color: $xgs-carbon-text;
+
+  &:hover {
+    background-color: $xgs-carbon-raised !important;
+    color: #FFFFFF;
+  }
+}
+
+// --------------------------------------------------------------------------------------- tabs
+// A line under the active tab instead of a folder tab: copper for where you are.
+
+.nav-tabs {
+  border-bottom: 1px solid $xgs-line;
+}
+
+.nav-tabs > li {
+  border-radius: 0;
+  margin-right: 0;
+}
+
+.nav-tabs > li > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  color: $xgs-muted;
+  font-weight: 500;
+}
+
+.nav-tabs > li > a:hover {
+  color: $xgs-text;
+  border-bottom-color: $xgs-line !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background: transparent !important;
+  color: $xgs-text;
+  font-weight: 600;
+  border-bottom: 2px solid $xgs-copper-text !important;
+}
+
+// ------------------------------------------------------------------------------------- tables
+
+.table > thead > tr > th,
+.bootgrid-table th {
+  color: $xgs-muted;
+  font-weight: 600;
+  border-bottom: 1px solid $xgs-line;
+}
+
+.bootgrid-table th > .column-header-anchor {
+  color: $xgs-muted !important;
+}
+
+.table > tbody > tr > td,
+.table > tbody > tr > th {
+  border-top-color: $xgs-line-soft;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: $xgs-raised;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: $table-bg-hover;
+}
+
+// Figures line up in a column.
+.table td,
+.bootgrid-table td {
+  font-variant-numeric: tabular-nums;
+}
+
+// ------------------------------------------------------------------------------------ buttons
+
+.btn {
+  border-radius: $border-radius-base;
+  font-weight: 500;
+}
+
+.btn-primary,
+.btn-primary:focus {
+  background: $xgs-copper;
+  border-color: $xgs-copper;
+  color: $xgs-on-copper;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background: darken($xgs-copper, 6%);
+  border-color: darken($xgs-copper, 6%);
+  color: $xgs-on-copper;
+}
+
+.btn-default {
+  background: $xgs-surface;
+  border-color: $xgs-input-border;
+  color: $xgs-text;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    background: $xgs-raised;
+    border-color: darken($xgs-input-border, 8%);
+    color: $xgs-text;
+  }
+
+  .fa, .glyphicon {
+    color: $xgs-muted;
+  }
+}
+
+.btn:focus-visible,
+.form-control:focus {
+  outline: 0;
+  border-color: $xgs-signal;
+  box-shadow: 0 0 0 3px $xgs-focus;
+}
+
+// -------------------------------------------------------------------------------------- forms
+
+.form-control {
+  border-radius: $border-radius-base;
+  border-color: $xgs-input-border;
+  box-shadow: none;
+}
+
+.input-group-addon {
+  background: $xgs-raised;
+  border-color: $xgs-input-border;
+  color: $xgs-muted;
+}
+
+// --------------------------------------------------------------------------- alerts and bars
+// Soft grounds with readable text, instead of saturated blocks.
+
+.alert {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  color: $xgs-text;
+}
+
+.alert-info    { background: $xgs-signal-soft;  border-color: rgba($xgs-signal, .35); }
+.alert-success { background: $xgs-up-soft;      border-color: rgba($xgs-up, .35); }
+.alert-warning { background: $xgs-caution-soft; border-color: rgba($xgs-caution, .40); }
+
+.alert.alert-danger {
+  background: $xgs-down-soft;
+  border-color: rgba($xgs-down, .35);
+  color: $xgs-text !important;
+}
+
+// Labels as the design's pills: a soft ground and its own colour for the text, which reads in
+// both modes - white on the dark theme's green or teal would not.
+.label {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.label-primary { background: $xgs-copper-soft;  color: $xgs-copper-ink; }
+.label-info    { background: $xgs-signal-soft;  color: $xgs-signal-ink; }
+.label-success { background: $xgs-up-soft;      color: $xgs-up-ink; }
+.label-warning { background: $xgs-caution-soft; color: $xgs-caution-ink; }
+.label-danger  { background: $xgs-down-soft;    color: $xgs-down-ink; }
+
+.progress {
+  background: $xgs-line-soft;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.progress-bar {
+  background-color: $xgs-signal;
+  box-shadow: none;
+}
+
+.progress-bar-success { background-color: $xgs-up; }
+.progress-bar-warning { background-color: $xgs-caution; }
+.progress-bar-danger  { background-color: $xgs-down; }
+
+// ------------------------------------------------------------------------------ machine text
+
+code, kbd, pre, samp {
+  font-family: $font-family-monospace;
+}
+
+code {
+  background: $xgs-raised;
+  border: 1px solid $xgs-line-soft;
+  color: $xgs-text;
+}
+
+pre {
+  background: $xgs-raised;
+  border-color: $xgs-line;
+  color: $xgs-text;
+}
+
+// ----------------------------------------------------------------- dialogs, menus, the login
+
+.modal-content {
+  border-radius: 12px;
+  border-color: $xgs-line;
+  overflow: hidden;
+}
+
+.modal-header {
+  border-bottom-color: $xgs-line;
+
+  .modal-title {
+    font-weight: 600;
+  }
+}
+
+.modal-footer {
+  border-top-color: $xgs-line;
+}
+
+.dropdown-menu {
+  border-radius: 8px;
+  border-color: $xgs-line;
+}
+
+.login-modal-container {
+  background: $xgs-surface;
+  border: 1px solid $xgs-line;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.login-modal-head {
+  background: $xgs-carbon;
+}
+
+// ------------------------------------------------------------------- the appliance's own pages
+// The summary cards of the appliance plugins (one specification, a prefix per plugin). The status
+// edge along the start becomes a bar along the foot, as the theme's drawing has it; the colour
+// keeps its meaning - green fine, amber look at it, red broken, grey no judgement.
+
+.xgs-card, .lh-card, .fp-card, .fc-vital, .nr-card {
+  background: $xgs-surface !important;
+  border: 1px solid $xgs-line !important;
+  border-radius: 10px !important;
+  padding: 12px 16px 14px !important;
+  box-shadow: inset 0 -3px 0 $xgs-neutral, $xgs-shadow;
+
+  &.ok   { box-shadow: inset 0 -3px 0 $xgs-up, $xgs-shadow; }
+  &.warn { box-shadow: inset 0 -3px 0 $xgs-caution, $xgs-shadow; }
+  &.bad  { box-shadow: inset 0 -3px 0 $xgs-down, $xgs-shadow; }
+
+  .k {
+    color: $xgs-muted;
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  .v {
+    font-weight: 700;
+  }
+
+  .fa {
+    opacity: .55;
+  }
+}
+
+// ----------------------------------------------------------------------------- the scrollbars
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:hover {
+  background: $xgs-line;
+  border-color: $xgs-line;
+  border-radius: 4px;
+}

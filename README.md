@@ -1,4 +1,147 @@
 # XGS Silicon
 
-A light, a dark and an automatic theme for the OPNsense GUI on Sophos XGS appliances. Part of the
-[os-xgs-npu](https://github.com/AbdelmonemAwad/os-xgs-npu) project.
+**A theme for the OPNsense web GUI on Sophos XGS appliances: light, dark, and one that follows your
+system's setting.** The bar along the top and the menu are carbon in both modes, as the chassis is;
+copper marks what you act on, teal the data path. The type is IBM Plex, Latin and Arabic from one
+family, carried inside the theme so that a GUI opened without internet looks the same as one with it.
+
+It is part of the [os-xgs-npu](https://github.com/AbdelmonemAwad/os-xgs-npu) project, and an image
+from [xgs-image-builder](https://github.com/AbdelmonemAwad/xgs-image-builder) starts with it.
+
+![The coprocessor's Overview page in the light theme - the design](docs/images/concept-overview-light.png)
+
+## Three themes
+
+| Theme | What it is |
+|---|---|
+| `xgs` | Light: a warm grey ground, white surfaces, the carbon bar and menu. |
+| `xgs-dark` | Dark: the same parts on a near-black ground, with lighter copper and teal so they read on it. |
+| `xgs-auto` | Either one, as your browser's own light or dark setting says, and it switches when that setting does. **The default** in an image. |
+
+`xgs-auto` works the way OPNsense's own `opnsense-auto` does: a small script picks the light or the
+dark stylesheets before the page is drawn, and again whenever the system's setting changes.
+
+## The design
+
+The theme follows a design drawn first. These are its three boards: the identity, and the
+coprocessor's Overview page in each mode, the dark one in Arabic and right to left.
+
+![Identity: the colours, the type and the parts](docs/images/concept-identity.png)
+
+| Light, English | Dark, Arabic, right to left |
+|---|---|
+| ![Overview, light](docs/images/concept-overview-light.png) | ![Overview, dark, Arabic](docs/images/concept-overview-dark-arabic.png) |
+
+The front-panel strip and the capacity bars in the drawings are parts of the coprocessor's pages
+that the [os-xgs-npu](https://github.com/AbdelmonemAwad/os-xgs-npu) plugin is adding. The theme itself
+colours what OPNsense draws.
+
+## The identity colours
+
+![The light palette](docs/images/palette-light.svg)
+
+![The dark palette](docs/images/palette-dark.svg)
+
+| Colour | Light | Dark | What it marks |
+|---|---|---|---|
+| ground | `#F3F4F1` | `#0D0F12` | Behind everything. |
+| surface | `#FFFFFF` | `#14181D` | Boxes, tables, cards, dialogs. |
+| line | `#DCDFE3` | `#29303A` | Borders and rules. |
+| text | `#14171B` | `#E6E9ED` | What you read. |
+| muted | `#59626E` | `#98A2AF` | Labels, column headings, the footer. |
+| carbon | `#16191D` | `#101317` | The bar along the top and the menu, in both modes. |
+| copper | `#B04E14` | `#E8834A`, and `#BF5319` behind white text | What you act on: buttons, links, the active tab and menu entry. |
+| signal | `#0B7480` | `#39C2C6` | The data path: progress, focus, information. |
+| up | `#1B7A4B` | `#3CCB86` | Working: a link up, a check passed. |
+| caution | `#9A6510` | `#E9B04C` | Look at it. |
+| down | `#B42318` | `#F07070` | Broken. |
+
+The palettes above are drawn from the token files themselves (`tools/readme-art.py`), and the checks
+fail when they differ. The tokens are
+[`xgs/…/_xgs-tokens.scss`](src/opnsense/www/themes/xgs/assets/stylesheets/_xgs-tokens.scss) and
+[`xgs-dark/…/_xgs-tokens.scss`](src/opnsense/www/themes/xgs-dark/assets/stylesheets/_xgs-tokens.scss).
+Measured: every text colour reads at 4.5:1 or better on every surface the theme puts it on: the
+text, the muted text and the placeholders, the bar's and the menu's, copper and teal, the label pills,
+and white on every coloured button. The lowest are white on the dark theme's copper buttons, at
+4.7:1, and the light placeholders, at 4.7:1. In the dark theme copper is two colours for that reason: white on `#E8834A` is 2.7:1.
+Labels are a soft ground with their own colour as text, as the design's pills are, because white on
+the dark theme's green or teal would not reach it either.
+
+## The type
+
+**IBM Plex Sans** for Latin, **IBM Plex Sans Arabic** for Arabic, and **IBM Plex Mono** for machine
+text: logs, sysctls, counters, addresses. One stack serves both scripts, because the browser takes
+each glyph from the first family that has it. The fonts are in the theme (`build/fonts`, about
+660 KB), so nothing is fetched from a font service. Figures in tables line up in columns.
+
+## What it changes, and what it does not
+
+It changes colour, type and corners:
+- the bar and the menu, including the collapsed menu's flyouts;
+- tabs, which become a line under the active one;
+- tables, buttons, form fields, alerts, dialogs and the login page;
+- the dashboard's widgets;
+- the summary cards of the appliance's own pages, where the status edge becomes a bar along the foot.
+
+It does not change layout. The text is 14 px at a 1.35 line, which keeps OPNsense's 18 px line, so
+no form or table moves. Everything else is OPNsense's own theme, unchanged.
+
+## Installing
+
+On the appliance, from a copy of this repository:
+
+```sh
+fetch -o /tmp/theme.tar.gz https://github.com/AbdelmonemAwad/os-theme-xgs/archive/refs/heads/main.tar.gz
+tar -xzf /tmp/theme.tar.gz -C /tmp
+sh /tmp/os-theme-xgs-main/install/install.sh
+```
+
+Then choose it in **System: Settings: General: Theme**, or from the shell:
+
+```sh
+sh /tmp/os-theme-xgs-main/install/enable.sh xgs-auto
+```
+
+`install/uninstall.sh` removes the three themes. If one of them is the GUI's theme, it puts OPNsense's
+own back first.
+
+The themes live in OPNsense's theme directory, where updates of OPNsense do not touch them.
+
+## Arabic
+
+With [opnsense-rtl](https://github.com/AbdelmonemAwad/opnsense-rtl) installed, the GUI in Arabic is
+laid out right to left. That project writes a mirrored copy of every installed theme's stylesheets,
+these three included, at every boot, and the installer here runs it once more so Arabic has them
+straight away. In Arabic the line is taller and letter spacing is off: spacing breaks the joins
+between letters.
+
+## Building
+
+The stylesheets in `build/css` are compiled from `assets/stylesheets`, and both are in the
+repository, as OPNsense keeps its own:
+
+```sh
+npm ci
+sh tools/build-css.sh
+```
+
+The theme is built on OPNsense's own `opnsense` and `opnsense-dark` themes. The base is recorded in
+[`BASE`](src/opnsense/www/themes/xgs/BASE). `tools/derive-from-core.py` takes a newer OPNsense's theme
+directory and derives both themes from it again, and leaves this theme's own files alone: the colour
+maps, the tokens and `_xgs*.scss`. What the theme changes is in one file,
+[`_xgs.scss`](src/opnsense/www/themes/xgs/assets/stylesheets/_xgs.scss).
+
+`tools/serve.py` serves the themes as an appliance does. With saved pages of the GUI it shows them in
+any of the three themes, and right to left, before anything is installed.
+
+## Where it stands
+
+- **Done:** the light and dark stylesheets compile, and OPNsense's login page is drawn correctly with
+  both (2026-10-18).
+- **Still to do:** the full GUI on an appliance, and Arabic right to left on the real pages. This
+  section will say when each has been done.
+
+## Licence
+
+BSD-2-Clause, in [LICENSE](LICENSE). The parts that come from OPNsense keep OPNsense's licence,
+beside each theme directory. IBM Plex is under the SIL Open Font License 1.1, beside the fonts.
