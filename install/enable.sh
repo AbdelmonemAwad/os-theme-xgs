@@ -15,10 +15,12 @@ case "$THEME" in
 esac
 [ -d "/usr/local/opnsense/www/themes/$THEME" ] || { echo "$THEME is not installed: run install/install.sh first" >&2; exit 1; }
 
+# The GUI's theme is <theme> at the root of config.xml, not under <system>: measured on an XGS 3300,
+# 2026-10-18, where a first version of this wrote <system><theme> and the GUI did not change.
 /usr/local/bin/php -r '
 require_once "/usr/local/opnsense/mvc/script/load_phalcon.php";
 $config = \OPNsense\Core\Config::getInstance();
-$config->object()->system->theme = $argv[1];
+$config->object()->theme = $argv[1];
 $config->save();
 echo "GUI theme: " . $argv[1] . "\n";
 ' "$THEME"

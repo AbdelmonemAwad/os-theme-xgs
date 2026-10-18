@@ -36,6 +36,19 @@ The front-panel strip and the capacity bars in the drawings are parts of the cop
 that the [os-xgs-npu](https://github.com/AbdelmonemAwad/os-xgs-npu) plugin is adding. The theme itself
 colours what OPNsense draws.
 
+## On real pages
+
+The same theme on pages of the GUI, saved from an XGS 3300 running OPNsense 26.7 and drawn with the
+theme's own stylesheets by `tools/serve.py`. The Arabic one was turned into Arabic with the GUI's
+own translations, and laid out with the mirrored stylesheets that
+[opnsense-rtl](https://github.com/AbdelmonemAwad/opnsense-rtl) makes of the theme.
+
+| Light | Dark |
+|---|---|
+| ![The coprocessor's Overview page, light](docs/images/real-overview-light.png) | ![The coprocessor's Overview page, dark](docs/images/real-overview-dark.png) |
+
+![The coprocessor's Settings page in Arabic, right to left, light](docs/images/real-settings-arabic.png)
+
 ## The identity colours
 
 ![The light palette](docs/images/palette-light.svg)
@@ -62,7 +75,8 @@ fail when they differ. The tokens are
 [`xgs-dark/…/_xgs-tokens.scss`](src/opnsense/www/themes/xgs-dark/assets/stylesheets/_xgs-tokens.scss).
 Measured: every text colour reads at 4.5:1 or better on every surface the theme puts it on: the
 text, the muted text and the placeholders, the bar's and the menu's, copper and teal, the label pills,
-and white on every coloured button. The lowest are white on the dark theme's copper buttons, at
+white on every coloured button, and the text on the progress bars - near-black on the dark theme's
+bright ones. The lowest are white on the dark theme's copper buttons, at
 4.7:1, and the light placeholders, at 4.7:1. In the dark theme copper is two colours for that reason: white on `#E8834A` is 2.7:1.
 Labels are a soft ground with their own colour as text, as the design's pills are, because white on
 the dark theme's green or teal would not reach it either.
@@ -136,10 +150,22 @@ any of the three themes, and right to left, before anything is installed.
 
 ## Where it stands
 
-- **Done:** the light and dark stylesheets compile, and OPNsense's login page is drawn correctly with
-  both (2026-10-18).
-- **Still to do:** the full GUI on an appliance, and Arabic right to left on the real pages. This
-  section will say when each has been done.
+Done, 2026-10-18:
+- The light and dark stylesheets compile.
+- Pages saved from an XGS 3300 running OPNsense 26.7 are drawn correctly with both themes: the
+  login page, the coprocessor's Overview and Settings, and the dashboard. The Overview and Settings
+  are also drawn in Arabic, right to left. Looking at them found four faults, now fixed:
+  - a table heading in a serif font, because OPNsense names a font the theme does not carry;
+  - the search box's icon in white;
+  - the cards' status bars missing in the dark theme;
+  - white text on the dark theme's bright progress bars.
+- **Installed on an XGS 3300** with `install/install.sh`. Every file is served, the mirrored copies
+  are made, and `xgs-auto`'s links work. `install/enable.sh xgs-auto` made the login page load
+  `xgs-auto` and its switcher, and `xgs-dark` worked the same way. `install/uninstall.sh` removed the
+  three themes while one was in use, and put OPNsense's theme back first. The unit's own theme was
+  then restored.
+
+Not yet: an image built with the theme and booted, and the GUI's pages beyond those four.
 
 ## Licence
 

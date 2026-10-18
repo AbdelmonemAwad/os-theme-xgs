@@ -9,9 +9,9 @@ set -u
 /usr/local/bin/php -r '
 require_once "/usr/local/opnsense/mvc/script/load_phalcon.php";
 $config = \OPNsense\Core\Config::getInstance();
-$system = $config->object()->system;
-if (isset($system->theme) && in_array((string)$system->theme, ["xgs", "xgs-dark", "xgs-auto"], true)) {
-    $system->theme = "opnsense";
+$root = $config->object();
+if (isset($root->theme) && in_array((string)$root->theme, ["xgs", "xgs-dark", "xgs-auto"], true)) {
+    $root->theme = "opnsense";
     $config->save();
     echo "GUI theme: opnsense\n";
 }
