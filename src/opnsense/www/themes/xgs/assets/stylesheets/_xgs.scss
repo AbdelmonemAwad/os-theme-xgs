@@ -9,6 +9,21 @@
 // on; teal for the data path; IBM Plex, which has an Arabic of its own. What it is not: a change of
 // layout. Every height OPNsense sets stays, so no page moves; only colour, type and corners change.
 
+// ------------------------------------------------------------------------------ for the pages
+// The colours, as custom properties, for pages that draw with them: os-xgs-npu's front panel and
+// bars read var(--xgs-up), var(--xgs-signal) and var(--xgs-copper), with their own colours as the
+// fallback under any other theme.
+
+:root {
+  --xgs-copper: #{$xgs-copper-text};
+  --xgs-signal: #{$xgs-signal};
+  --xgs-up: #{$xgs-up};
+  --xgs-caution: #{$xgs-caution};
+  --xgs-down: #{$xgs-down};
+  --xgs-line: #{$xgs-line};
+  --xgs-muted: #{$xgs-muted};
+}
+
 // ------------------------------------------------------------------------------------- the page
 
 html, body {
