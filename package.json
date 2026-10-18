@@ -1,0 +1,11 @@
+{
+  "name": "os-theme-xgs",
+  "private": true,
+  "description": "Builds the XGS Silicon theme stylesheets",
+  "scripts": {
+    "build": "sh tools/build-css.sh"
+  },
+  "devDependencies": {
+    "sass": "1.105.2"
+  }
+}

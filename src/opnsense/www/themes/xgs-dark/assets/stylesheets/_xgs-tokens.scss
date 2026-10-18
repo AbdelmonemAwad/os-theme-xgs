@@ -1,0 +1,84 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+//
+// XGS Silicon, dark: the same tokens as xgs/assets/stylesheets/_xgs-tokens.scss, dark values.
+
+$xgs-ground:        #0D0F12;
+$xgs-surface:       #14181D;
+$xgs-raised:        #171B21;
+$xgs-line:          #29303A;
+$xgs-line-soft:     #1F252C;
+$xgs-text:          #E6E9ED;
+$xgs-muted:         #98A2AF;
+$xgs-input-border:  #39414B;
+
+$xgs-carbon:        #101317;
+$xgs-carbon-raised: #1F252C;
+$xgs-carbon-deep:   #0D1013;
+$xgs-carbon-line:   #222830;
+$xgs-carbon-text:   #C9CED6;
+$xgs-carbon-muted:  #98A2AF;
+
+// Copper text is lighter than copper behind white text: #E8834A reads on the dark ground, and
+// white reads on #BF5319 at 4.7:1 (#C4561C, tried first, was 4.47).
+$xgs-copper:        #BF5319;
+$xgs-copper-text:   #E8834A;
+$xgs-on-copper:     #FFFFFF;
+$xgs-signal:        #39C2C6;
+$xgs-up:            #3CCB86;
+$xgs-caution:       #E9B04C;
+$xgs-down:          #F07070;
+$xgs-neutral:       #6B7480;
+$xgs-signal-soft:   rgba(57, 194, 198, .12);
+$xgs-up-soft:       rgba(60, 203, 134, .12);
+$xgs-caution-soft:  rgba(233, 176, 76, .12);
+$xgs-down-soft:     rgba(240, 112, 112, .12);
+$xgs-copper-soft:   rgba(232, 131, 74, .12);
+$xgs-copper-ink:    #E8834A;
+$xgs-signal-ink:    #39C2C6;
+$xgs-up-ink:        #3CCB86;
+$xgs-caution-ink:   #E9B04C;
+$xgs-down-ink:      #F07070;
+$xgs-focus:         rgba(57, 194, 198, .35);
+$xgs-shadow:        none;
+
+$brand-primary:            $xgs-copper;
+// White on each at 4.5:1 or better (measured: 5.3, 6.0, 4.9, 5.7).
+$brand-success:            #1E7A50;
+$brand-info:               #1A6E73;
+$brand-warning:            #9A6510;
+$brand-danger:             #B83A35;
+$body-bg:                  $xgs-surface;
+$text-color:               $xgs-text;
+$link-color:               $xgs-copper-text;
+$link-hover-color:         lighten($xgs-copper-text, 10%);
+
+$font-family-base:         "IBM Plex Sans", "IBM Plex Sans Arabic", "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif:   $font-family-base;
+$font-family-monospace:    "IBM Plex Mono", Menlo, Consolas, "Courier New", monospace;
+$headings-font-family:     $font-family-base;
+$headings-font-weight:     600;
+$font-size-base:           14px;
+$line-height-base:         1.35;
+
+$border-radius-base:       6px;
+$border-radius-large:      8px;
+$border-radius-small:      4px;
+
+$table-bg-hover:           #1C2128;
+$table-border-color:       $xgs-line-soft;
+$input-bg:                 #101317;
+$input-color:              $xgs-text;
+$input-border:             $xgs-input-border;
+$input-border-focus:       $xgs-signal;
+$input-color-placeholder:  #8A939E;
+$dropdown-bg:              #1A1F25;
+$dropdown-link-color:      $xgs-text;
+$dropdown-link-hover-color: #FFFFFF;
+$dropdown-link-hover-bg:   #232A31;
+$dropdown-border:          $xgs-line;
+$modal-content-bg:         $xgs-surface;
+$panel-bg:                 $xgs-surface;
+$well-bg:                  $xgs-raised;
+
+$icon-font-path:           "/ui/themes/xgs/build/fonts/bootstrap/";

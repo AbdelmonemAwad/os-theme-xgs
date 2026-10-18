@@ -1,0 +1,80 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+//
+// XGS Silicon, light: the tokens. Loaded before Bootstrap's variables, whose every value is a
+// !default, so the Bootstrap values set here are the ones the whole stylesheet is built with.
+// xgs-dark has a file of the same name with the same tokens and its own values.
+
+// The page: a warm grey ground, white surfaces.
+$xgs-ground:        #F3F4F1;
+$xgs-surface:       #FFFFFF;
+$xgs-raised:        #FAFAF8;
+$xgs-line:          #DCDFE3;
+$xgs-line-soft:     #EEF0F2;
+$xgs-text:          #14171B;
+$xgs-muted:         #59626E;
+$xgs-input-border:  #C5CAD1;
+
+// Carbon: the bar along the top and the menu, in both modes.
+$xgs-carbon:        #16191D;
+$xgs-carbon-raised: #232A31;
+$xgs-carbon-deep:   #1B1F24;
+$xgs-carbon-line:   #2A3138;
+$xgs-carbon-text:   #C9CED6;
+$xgs-carbon-muted:  #98A2AF;
+
+// Copper for what the owner acts on, signal teal for the data path, and the three judgements.
+$xgs-copper:        #B04E14;
+$xgs-copper-text:   #B04E14;
+$xgs-on-copper:     #FFFFFF;
+$xgs-signal:        #0B7480;
+$xgs-up:            #1B7A4B;
+$xgs-caution:       #9A6510;
+$xgs-down:          #B42318;
+$xgs-neutral:       #8A939E;
+$xgs-signal-soft:   #E2F1F3;
+$xgs-up-soft:       #E3F2EA;
+$xgs-caution-soft:  #F8EEDC;
+$xgs-down-soft:     #FBE5E3;
+$xgs-copper-soft:   #F8E9E0;
+// Text on the soft grounds, measured at 4.5:1 or better on each: the two that fell short as
+// themselves (caution 4.30, copper 4.49) are a shade darker.
+$xgs-copper-ink:    #9A4410;
+$xgs-signal-ink:    #0B7480;
+$xgs-up-ink:        #1B7A4B;
+$xgs-caution-ink:   #8A5A0C;
+$xgs-down-ink:      #B42318;
+$xgs-focus:         rgba(11, 116, 128, .30);
+$xgs-shadow:        0 1px 2px rgba(20, 23, 27, .04);
+
+// Bootstrap 3, as OPNsense ships it. Its buttons and badges put white on the brand colours, so each
+// is one white reads on at 4.5:1 or better (measured: 5.3, 5.5, 4.9, 6.6).
+$brand-primary:            $xgs-copper;
+$brand-success:            $xgs-up;
+$brand-info:               $xgs-signal;
+$brand-warning:            #9A6510;
+$brand-danger:             $xgs-down;
+$body-bg:                  $xgs-surface;
+$link-color:               $xgs-copper-text;
+$link-hover-color:         darken($xgs-copper-text, 12%);
+
+$font-family-base:         "IBM Plex Sans", "IBM Plex Sans Arabic", "Helvetica Neue", Arial, sans-serif;
+$font-family-sans-serif:   $font-family-base;
+$font-family-monospace:    "IBM Plex Mono", Menlo, Consolas, "Courier New", monospace;
+$headings-font-family:     $font-family-base;
+$headings-font-weight:     600;
+// 14 px at 1.35 keeps OPNsense's 18 px line, so no form or table changes height.
+$font-size-base:           14px;
+$line-height-base:         1.35;
+
+$border-radius-base:       6px;
+$border-radius-large:      8px;
+$border-radius-small:      4px;
+
+$table-bg-hover:           #F1F3F2;
+$table-border-color:       $xgs-line-soft;
+$input-border:             $xgs-input-border;
+$input-border-focus:       $xgs-signal;
+$input-color-placeholder:  #6B7480;
+
+$icon-font-path:           "/ui/themes/xgs/build/fonts/bootstrap/";

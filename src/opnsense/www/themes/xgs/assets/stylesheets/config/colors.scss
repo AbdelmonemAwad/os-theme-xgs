@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+//
+// XGS Silicon, light: OPNsense's colour map with this theme's values. The keys are OPNsense's;
+// the bar along the top and the menu are carbon in both modes, so their colours are dark here too.
+$colors: (
+  brand-primary: #B04E14,
+  content-background: #F3F4F1,
+  body-background: #FFFFFF,
+  navbar-default-color: #C9CED6,
+  page-content-head-background: #FFFFFF,
+  page-foot-background: #FFFFFF,
+  table-bg-accent: #F7F8F6,
+  login-modal-head-background: #16191D,
+  navbar-default-bg: #16191D,
+  list-group-link-color: #C9CED6,
+  text-color: #14171B,
+  border-default: #DCDFE3,
+  dashboard-widget-error: #B42318,
+  border-highlight: #8A939E,
+  chip-background: #0B7480,
+  chip-text: #FFFFFF,
+);

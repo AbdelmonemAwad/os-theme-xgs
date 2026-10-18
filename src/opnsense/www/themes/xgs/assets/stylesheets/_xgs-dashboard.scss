@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: BSD-2-Clause
+// Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+//
+// XGS Silicon: the dashboard's widgets, in both modes. Loaded last by dashboard.scss.
+
+:root {
+  --chart-js-font-color: #{$xgs-muted};
+}
+
+.grid-stack-item-content {
+  background-color: $xgs-surface;
+  border: 1px solid $xgs-line;
+  border-radius: 10px;
+  box-shadow: $xgs-shadow;
+}
+
+.widget-header {
+  margin-top: .6em;
+}
+
+.widget-title {
+  color: $xgs-text;
+  font-weight: 600;
+}
+
+.panel-divider {
+  border-color: $xgs-line-soft;
+}
+
+.widget-error {
+  color: $xgs-down;
+}

@@ -1,0 +1,7 @@
+XGS Silicon: a theme for the OPNsense web GUI on Sophos XGS appliances, in three parts -
+xgs (light), xgs-dark (dark) and xgs-auto, which follows the browser's own light or dark
+setting. A carbon bar and menu in both modes, copper for actions, teal for the data path,
+and IBM Plex - Latin, Arabic and Mono - inside the theme, so nothing is fetched from the
+internet. Built on OPNsense's own themes; no page changes its layout.
+
+WWW: https://github.com/AbdelmonemAwad/os-theme-xgs
