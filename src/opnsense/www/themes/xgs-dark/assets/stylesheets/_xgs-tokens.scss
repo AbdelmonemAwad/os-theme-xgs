@@ -24,6 +24,9 @@ $xgs-carbon-muted:  #98A2AF;
 $xgs-copper:        #BF5319;
 $xgs-copper-text:   #E8834A;
 $xgs-on-copper:     #FFFFFF;
+// The dark theme's bars are bright, so their text is the ground's near-black: white on #39C2C6
+// would be 2.0:1 (seen on the dashboard's memory bars, 2026-10-18).
+$xgs-on-bar:        #0D0F12;
 $xgs-signal:        #39C2C6;
 $xgs-up:            #3CCB86;
 $xgs-caution:       #E9B04C;
@@ -40,7 +43,9 @@ $xgs-up-ink:        #3CCB86;
 $xgs-caution-ink:   #E9B04C;
 $xgs-down-ink:      #F07070;
 $xgs-focus:         rgba(57, 194, 198, .35);
-$xgs-shadow:        none;
+// Not `none`: it is combined with the cards' status bar in one box-shadow list, where `none` is
+// invalid and drops the whole declaration (the bars vanished in the dark theme, 2026-10-18).
+$xgs-shadow:        0 0 0 transparent;
 
 $brand-primary:            $xgs-copper;
 // White on each at 4.5:1 or better (measured: 5.3, 6.0, 4.9, 5.7).

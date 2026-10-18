@@ -9,7 +9,7 @@ running OPNsense can be looked at with these stylesheets before anything is inst
 own <link> elements are pointed here from the browser's console, and nothing on the appliance
 changes. The stylesheets name their fonts as /ui/themes/xgs/build/fonts/..., which resolves here.
 
-    python3 tools/serve.py [port] [pages]    (8765 unless given)
+    python3 tools/serve.py [port] [pages] [appliance]    (8765 unless given)
 
 With a directory of saved pages - a page of the GUI saved from the browser with its scripts taken
 out, and what it loads from /ui/ beside it under the same paths - /pages/<name>.html shows that page
@@ -24,9 +24,14 @@ import os
 import re
 import sys
 import urllib.parse
+import urllib.request
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src', 'opnsense', 'www')
 PAGES = os.path.abspath(sys.argv[2]) if len(sys.argv) > 2 else ''
+# With an appliance's address as well, what a saved page loads from /ui/ and has no copy of yet is
+# fetched from that appliance once and kept beside the pages: OPNsense's icon font and its other
+# stylesheets, which are static files.
+UPSTREAM = sys.argv[3].rstrip('/') if len(sys.argv) > 3 else ''
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -34,9 +39,20 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         url = urllib.parse.urlsplit(self.path)
         if PAGES and url.path.startswith('/pages/'):
             return self.page(url)
-        if PAGES and url.path.startswith('/ui/') and not url.path.startswith('/ui/themes/xgs'):
-            # What a saved page loads from the appliance besides the theme: its own copy.
+        if PAGES and url.path.startswith('/ui/') and (not url.path.startswith('/ui/themes/xgs')
+                                                      or url.path.endswith('.rtl.css')):
+            # What a saved page loads from the appliance besides the theme, and the mirrored
+            # stylesheets opnsense-rtl made of the theme's: their copies beside the pages.
             local = os.path.join(PAGES, url.path.lstrip('/'))
+            if not os.path.isfile(local) and UPSTREAM and '..' not in url.path:
+                try:
+                    with urllib.request.urlopen(UPSTREAM + url.path, timeout=15) as answer:
+                        body = answer.read()
+                    os.makedirs(os.path.dirname(local), exist_ok=True)
+                    with open(local, 'wb') as handle:
+                        handle.write(body)
+                except (OSError, ValueError):
+                    pass
             if os.path.isfile(local):
                 return self.send_file(local)
         return super().do_GET()

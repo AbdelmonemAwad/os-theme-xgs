@@ -109,6 +109,12 @@ hr {
   }
 }
 
+.page-head .input-group-addon {
+  background: $xgs-carbon-raised;
+  border-color: $xgs-carbon-line;
+  color: $xgs-carbon-muted;
+}
+
 .page-head .navbar-toggle {
   border-color: $xgs-carbon-line;
 
@@ -264,6 +270,19 @@ button.toggle-sidebar {
   border-bottom: 1px solid $xgs-line;
 }
 
+// OPNsense's Bootstrap names Source Sans Pro for a table's first header row, a font this theme does
+// not carry: without this the row falls back to the browser's serif (seen on 2026-10-18 on the
+// coprocessor's Overview page).
+.table > caption + thead > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > th,
+.table > thead:first-child > tr:first-child > td {
+  font-family: $font-family-base;
+  font-weight: 600;
+}
+
 .bootgrid-table th > .column-header-anchor {
   color: $xgs-muted !important;
 }
@@ -391,6 +410,7 @@ button.toggle-sidebar {
 .progress-bar {
   background-color: $xgs-signal;
   box-shadow: none;
+  color: $xgs-on-bar;
 }
 
 .progress-bar-success { background-color: $xgs-up; }
