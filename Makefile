@@ -1,3 +1,7 @@
+#-
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 Abdelmonem Awad <eg2@live.com>
+#
 PLUGIN_NAME=		theme-xgs
 PLUGIN_VERSION=		1.0
 PLUGIN_COMMENT=		XGS Silicon: a light, a dark and an automatic theme for OPNsense on Sophos XGS appliances
