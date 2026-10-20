@@ -21,16 +21,3 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
------------------------------------------------------------------------------
-
-Parts of this repository come from elsewhere, under their own terms:
-
-- The stylesheets under src/opnsense/www/themes/*/assets/ other than
-  config/colors.scss and the _xgs*.scss files, the logos under build/images/ and
-  xgs-auto's switcher (build/js/theme.js) are OPNsense's, Copyright (c) Deciso
-  B.V., BSD-2-Clause - the LICENSE file beside each theme directory. Bootstrap 3
-  under assets/stylesheets/bootstrap/ is MIT, as OPNsense ships it.
-- The fonts under src/opnsense/www/themes/xgs/build/fonts/ are IBM Plex,
-  Copyright (c) 2017 IBM Corp., SIL Open Font License 1.1 - LICENSE.IBMPlex.txt
-  beside them; the glyph icon font under fonts/bootstrap/ is Bootstrap's.

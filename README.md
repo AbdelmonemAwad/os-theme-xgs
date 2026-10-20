@@ -171,5 +171,6 @@ Not yet: an image built with the theme and booted, and the GUI's pages beyond th
 
 BSD-2-Clause, in [LICENSE](LICENSE). The parts that come from OPNsense keep OPNsense's licence,
 beside each theme directory. IBM Plex is under the SIL Open Font License 1.1, beside the fonts.
+Every part that comes from elsewhere, and its terms, is listed in [THIRD-PARTY.md](THIRD-PARTY.md).
 
 The photographs and screenshots under `docs/` are &copy; 2026 Abdelmonem Awad, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): use them freely, naming the author and linking here. Each carries that notice in a strip added below it.
