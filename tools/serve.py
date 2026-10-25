@@ -34,6 +34,17 @@ PAGES = os.path.abspath(sys.argv[2]) if len(sys.argv) > 2 else ''
 UPSTREAM = sys.argv[3].rstrip('/') if len(sys.argv) > 3 else ''
 
 
+def inside(root, relative):
+    """The file `relative` names under `root`, or None when it would be anywhere else - a `..` or a
+    link out of it. Any page the browser has open may ask this server for a file (it answers every
+    origin, for the fonts), so a name taken from a request is never opened outside its directory."""
+    base = os.path.realpath(root)
+    full = os.path.realpath(os.path.join(base, relative))
+    if full == base or not full.startswith(base + os.sep):
+        return None
+    return full
+
+
 class Handler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         url = urllib.parse.urlsplit(self.path)
@@ -43,8 +54,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                                                       or url.path.endswith('.rtl.css')):
             # What a saved page loads from the appliance besides the theme, and the mirrored
             # stylesheets opnsense-rtl made of the theme's: their copies beside the pages.
-            local = os.path.join(PAGES, url.path.lstrip('/'))
-            if not os.path.isfile(local) and UPSTREAM and '..' not in url.path:
+            local = inside(PAGES, urllib.parse.unquote(url.path).lstrip('/'))
+            if local is None:
+                return self.send_error(404)
+            if not os.path.isfile(local) and UPSTREAM:
                 try:
                     with urllib.request.urlopen(UPSTREAM + url.path, timeout=15) as answer:
                         body = answer.read()
@@ -62,9 +75,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         theme = query.get('theme', ['xgs'])[0]
         if theme not in ('xgs', 'xgs-dark', 'xgs-auto'):
             theme = 'xgs'
-        name = os.path.basename(url.path)
+        local = inside(PAGES, os.path.basename(urllib.parse.unquote(url.path)))
+        if local is None:
+            return self.send_error(404)
         try:
-            with open(os.path.join(PAGES, name), encoding='utf-8') as handle:
+            with open(local, encoding='utf-8') as handle:
                 text = handle.read()
         except OSError:
             return self.send_error(404)
