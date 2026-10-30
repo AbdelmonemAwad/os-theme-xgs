@@ -22,3 +22,7 @@ SECURITY.md export-ignore
 tools/ export-ignore
 package.json export-ignore
 package-lock.json export-ignore
+# README.md is left out too since 2026-10-30: nothing on an appliance reads it, and an image kept it
+# beside the code (measured on an XGS 3300). LICENSE and THIRD-PARTY.md stay, the terms the code
+# and its fonts are given under.
+/README.md export-ignore
