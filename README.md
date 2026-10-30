@@ -1,3 +1,18 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/readme/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/images/readme/banner-light.svg">
+  <img src="docs/images/readme/banner-light.svg" alt="os-theme-xgs - XGS Silicon: light, dark, and one that follows your system" width="100%">
+</picture>
+
+<p align="center">
+  <a href="https://github.com/AbdelmonemAwad/os-theme-xgs/releases/latest"><img alt="the newest release" src="https://img.shields.io/github/v/release/AbdelmonemAwad/os-theme-xgs?sort=semver&amp;style=flat-square&amp;label=release&amp;color=8250df"></a>
+  <a href="https://github.com/AbdelmonemAwad/os-theme-xgs/actions/workflows/checks.yml"><img alt="checks on main" src="https://img.shields.io/github/actions/workflow/status/AbdelmonemAwad/os-theme-xgs/checks.yml?branch=main&amp;style=flat-square&amp;label=checks"></a>
+  <a href="LICENSE"><img alt="licence: BSD-2-Clause" src="https://img.shields.io/badge/licence-BSD--2--Clause-blue.svg?style=flat-square"></a>
+  <a href="#installing"><img alt="OPNsense 26.7" src="https://img.shields.io/badge/OPNsense-26.7-d94f00.svg?style=flat-square"></a>
+  <a href="#three-themes"><img alt="three themes: light, dark, and one that follows the system" src="https://img.shields.io/badge/themes-light%20%C2%B7%20dark%20%C2%B7%20auto-555555.svg?style=flat-square"></a>
+  <a href="https://github.com/AbdelmonemAwad/os-xgs-npu"><img alt="part of os-xgs-npu" src="https://img.shields.io/badge/part%20of-os--xgs--npu-9a6700.svg?style=flat-square"></a>
+</p>
+
 # XGS Silicon
 
 **A theme for the OPNsense web GUI on Sophos XGS appliances: light, dark, and one that follows your
@@ -9,6 +24,8 @@ It is part of the [os-xgs-npu](https://github.com/AbdelmonemAwad/os-xgs-npu) pro
 from [xgs-image-builder](https://github.com/AbdelmonemAwad/xgs-image-builder) starts with it.
 
 ![The coprocessor's Overview page in the light theme - the design](docs/images/concept-overview-light.png)
+
+<p align="center"><b>Contents:</b> <a href="#three-themes">Three themes</a> &middot; <a href="#the-design">The design</a> &middot; <a href="#on-real-pages">On real pages</a> &middot; <a href="#the-identity-colours">The identity colours</a> &middot; <a href="#the-type">The type</a> &middot; <a href="#what-it-changes-and-what-it-does-not">What it changes, and what it does not</a> &middot; <a href="#installing">Installing</a> &middot; <a href="#arabic">Arabic</a> &middot; <a href="#building">Building</a> &middot; <a href="#where-it-stands">Where it stands</a> &middot; <a href="#licence">Licence</a></p>
 
 ## Three themes
 
