@@ -6,6 +6,6 @@
     "build": "sh tools/build-css.sh"
   },
   "devDependencies": {
-    "sass": "1.105.2"
+    "sass": "1.107.0"
   }
 }
